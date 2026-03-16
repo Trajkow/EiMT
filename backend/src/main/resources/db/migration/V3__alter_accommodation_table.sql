@@ -1,0 +1,1 @@
+alter table accommodation add column is_rented boolean default false;

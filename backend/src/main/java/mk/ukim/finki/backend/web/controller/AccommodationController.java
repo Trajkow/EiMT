@@ -47,4 +47,21 @@ public class AccommodationController {
         return this.accService.deleteById(id).map(ResponseEntity::ok).orElseGet(()-> ResponseEntity.badRequest().build());
     }
 
+    @PutMapping("/rent/{id}")
+    public ResponseEntity<DisplayAccommodationDTO> setRented(@PathVariable Long id){
+        return this.accService.setRented(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(()-> ResponseEntity.badRequest().build());
+    }
+
+    @GetMapping("/rented")
+     public ResponseEntity<List<DisplayAccommodationDTO>> findRented(){
+        return ResponseEntity.ok(this.accService.findRented());
+    }
+
+    @GetMapping("/available")
+    public ResponseEntity<List<DisplayAccommodationDTO>> findAvailable(){
+        return ResponseEntity.ok(this.accService.findAvailable());
+    }
+
 }

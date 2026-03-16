@@ -18,4 +18,10 @@ public interface AccommodationApplicationService {
 
     Optional<DisplayAccommodationDTO> deleteById(Long id);
 
+    Optional<DisplayAccommodationDTO> setRented(Long id);
+
+    List<DisplayAccommodationDTO> findRented();
+
+    List<DisplayAccommodationDTO> findAvailable();
+
 }

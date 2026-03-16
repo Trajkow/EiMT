@@ -50,4 +50,25 @@ public class AccommodationApplicationServiceImpl implements AccommodationApplica
     public Optional<DisplayAccommodationDTO> deleteById(Long id) {
         return this.accommodationService.deleteById(id).map(DisplayAccommodationDTO::from);
     }
+
+    @Override
+    public Optional<DisplayAccommodationDTO> setRented(Long id) {
+        return this.accommodationService.setRented(id).map(DisplayAccommodationDTO::from);
+    }
+
+    @Override
+    public List<DisplayAccommodationDTO> findRented() {
+        return this.accommodationService.findRented()
+                .stream()
+                .map(DisplayAccommodationDTO::from)
+                .toList();
+    }
+
+    @Override
+    public List<DisplayAccommodationDTO> findAvailable() {
+        return this.accommodationService.findAvailable()
+                .stream()
+                .map(DisplayAccommodationDTO::from)
+                .toList();
+    }
 }

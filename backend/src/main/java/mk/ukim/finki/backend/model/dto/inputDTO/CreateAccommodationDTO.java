@@ -8,9 +8,10 @@ public record CreateAccommodationDTO(
         String name,
         Category category,
         Long HostId,
-        Integer numRooms
+        Integer numRooms,
+        Boolean isRented
 ) {
     public Accommodation toAccommodation(Host host){
-        return new Accommodation(name, category, host, numRooms);
+        return new Accommodation(name, category, host, numRooms, isRented);
     }
 }

@@ -10,7 +10,8 @@ public record DisplayAccommodationDTO(
         String name,
         Category category,
         Long hostId,
-        Integer numRooms
+        Integer numRooms,
+        Boolean isRented
 ) {
 
     public static DisplayAccommodationDTO from(Accommodation accommodation){
@@ -19,7 +20,8 @@ public record DisplayAccommodationDTO(
           accommodation.getName(),
           accommodation.getCategory(),
           accommodation.getHost().getId(),
-          accommodation.getNumRooms()
+          accommodation.getNumRooms(),
+            accommodation.getIsRented()
         );
     }
 

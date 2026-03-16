@@ -23,4 +23,6 @@ public class Accommodation extends withTimeEntity {
 
     private Integer numRooms;
 
+    private Boolean isRented;
+
 }

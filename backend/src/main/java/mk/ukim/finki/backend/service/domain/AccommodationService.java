@@ -16,4 +16,11 @@ public interface AccommodationService {
     Optional<Accommodation> update(Long id, Accommodation accommodation);
 
     Optional<Accommodation> deleteById(Long id);
+
+    Optional<Accommodation> setRented(Long id);
+
+    List<Accommodation> findRented();
+
+    List<Accommodation> findAvailable();
+
 }

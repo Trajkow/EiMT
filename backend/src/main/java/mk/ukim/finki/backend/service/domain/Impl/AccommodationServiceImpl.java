@@ -53,4 +53,23 @@ public class AccommodationServiceImpl implements AccommodationService {
         current.ifPresent(this.accommodationRepository::delete);
         return current;
     }
+
+    @Override
+    public Optional<Accommodation> setRented(Long id) {
+        return this.accommodationRepository.findById(id)
+                .map((current) -> {
+                    current.setIsRented(true);
+                    return this.accommodationRepository.save(current);
+                });
+    }
+
+    @Override
+    public List<Accommodation> findRented() {
+        return this.accommodationRepository.findRentedAccommodations();
+    }
+
+    @Override
+    public List<Accommodation> findAvailable() {
+        return this.accommodationRepository.findAvailableAccommodations();
+    }
 }
