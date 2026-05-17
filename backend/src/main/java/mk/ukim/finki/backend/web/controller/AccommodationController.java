@@ -30,6 +30,14 @@ public class AccommodationController {
         return ResponseEntity.ok(accService.findAll());
     }
 
+    @Operation(summary = "Get accommodation by ID")
+    @GetMapping("/{id}")
+    public ResponseEntity<DisplayAccommodationDTO> findById(@PathVariable Long id) {
+        return accService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @Operation(summary = "Search & filter accommodations with pagination",
             description = "Supports filters: category, hostId, country, numRooms, hasAvailableRooms. Sort by 'name' or 'createdAt'.")
     @GetMapping("/search")
@@ -72,7 +80,7 @@ public class AccommodationController {
     }
 
     @Operation(summary = "Delete an accommodation")
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<DisplayAccommodationDTO> delete(@PathVariable Long id) {
         return this.accService.deleteById(id)
                 .map(ResponseEntity::ok)
