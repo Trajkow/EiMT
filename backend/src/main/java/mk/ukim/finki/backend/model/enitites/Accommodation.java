@@ -11,6 +11,14 @@ import mk.ukim.finki.backend.model.enumeration.Category;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedEntityGraph(
+        name = "Accommodation.withHostAndCountry",
+        attributeNodes = @NamedAttributeNode(value = "host", subgraph = "host-subgraph"),
+        subgraphs = @NamedSubgraph(
+                name = "host-subgraph",
+                attributeNodes = @NamedAttributeNode("country")
+        )
+)
 public class Accommodation extends withTimeEntity {
 
     private String name;
@@ -18,11 +26,12 @@ public class Accommodation extends withTimeEntity {
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Host host;
 
     private Integer numRooms;
 
     private Boolean isRented;
 
+    private Integer rentCount = 0;
 }

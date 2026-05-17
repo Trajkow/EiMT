@@ -1,0 +1,1 @@
+ALTER TABLE accommodation ADD COLUMN rent_count INT NOT NULL DEFAULT 0;
