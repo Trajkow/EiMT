@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import HomeIcon from '@mui/icons-material/Home';
 import ApartmentIcon from '@mui/icons-material/Apartment';
+import EventIcon from '@mui/icons-material/Event';
 import PeopleIcon from '@mui/icons-material/People';
 import PublicIcon from '@mui/icons-material/Public';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -13,6 +14,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 const NAV_LINKS = [
   { to: '/', label: 'Home', icon: <HomeIcon fontSize="small" /> },
+  { to: '/reservations', label: 'Reservations', icon: <EventIcon fontSize="small" />, requireAuth: true },
   { to: '/accommodations', label: 'Accommodations', icon: <ApartmentIcon fontSize="small" />, requireAuth: true },
   { to: '/hosts', label: 'Hosts', icon: <PeopleIcon fontSize="small" />, requireAuth: true },
   { to: '/countries', label: 'Countries', icon: <PublicIcon fontSize="small" />, requireAuth: true },

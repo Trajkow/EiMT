@@ -1,0 +1,1 @@
+ALTER TABLE reservation DROP CONSTRAINT reservation_accommodation_id_key;

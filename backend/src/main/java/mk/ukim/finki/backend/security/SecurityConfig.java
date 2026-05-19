@@ -43,6 +43,8 @@ public class SecurityConfig {
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/api-docs/**", "/v3/api-docs/**").permitAll()
                         // READ operations: require authentication (USER or ADMINISTRATOR)
                         .requestMatchers(HttpMethod.GET, "/api/**").authenticated()
+                        // RESERVATION operations: require authentication (USER or ADMINISTRATOR)
+                        .requestMatchers(HttpMethod.POST, "/api/reservations/**").authenticated()
                         // WRITE operations: ADMINISTRATOR only
                         .requestMatchers(HttpMethod.POST, "/api/**").hasRole("ADMINISTRATOR")
                         .requestMatchers(HttpMethod.PUT, "/api/**").hasRole("ADMINISTRATOR")

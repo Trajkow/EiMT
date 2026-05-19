@@ -10,6 +10,7 @@ import RegisterPage from './pages/RegisterPage';
 import AccommodationsPage from './pages/AccommodationsPage';
 import HostsPage from './pages/HostsPage';
 import CountriesPage from './pages/CountriesPage';
+import ReservationsPage from './pages/ReservationsPage';
 
 function App() {
   return (
@@ -17,12 +18,18 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            {/* Public routes */}
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
 
-            {/* Authenticated routes (USER + ADMINISTRATOR) */}
+            <Route
+              path="/reservations"
+              element={
+                <ProtectedRoute>
+                  <ReservationsPage />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/accommodations"
               element={
@@ -48,7 +55,6 @@ function App() {
               }
             />
 
-            {/* Catch-all */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
